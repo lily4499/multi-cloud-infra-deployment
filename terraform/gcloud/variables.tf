@@ -1,8 +1,4 @@
 
-variable "credentials_path" {
-  default = "/path/to/credentials.json"  # This is used as a placeholder; the Jenkinsfile will override it.
-}
-
 
 variable "project_id" {
   description = "Google Cloud project ID"

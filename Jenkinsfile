@@ -128,6 +128,7 @@ def deployGcloudResources() {
     }
     if (params.RESOURCE == 'all' || params.RESOURCE == 'gcr') {
         echo "Deploying Google Container Registry (GCR)..."
+        sh 'export GOOGLE_APPLICATION_CREDENTIALS=$GOOGLE_APPLICATION_CREDENTIALS'
         sh 'terraform init'
         sh "terraform ${params.ACTION} -target=module.gcr -auto-approve"
     }
