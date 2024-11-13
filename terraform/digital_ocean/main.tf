@@ -14,7 +14,7 @@ module "droplets" {
 
 # Call the registry module to create a DigitalOcean Container Registry
 module "registry" {
-  source         = "../../modules/registry"
+  source         = "../../modules/do_registry"
   registry_name  = var.registry_name
   subscription_tier_slug = var.subscription_tier_slug
   region         = var.region
