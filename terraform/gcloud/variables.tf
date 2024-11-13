@@ -67,6 +67,12 @@ variable "subnetwork" {
 
 
 #ARTIFARCT REGISTRY
+
+variable "location" {
+  description = "Location for the Artifact Registry repository (e.g., us-central1)"
+  type        = string
+}
+
 variable "repository_name" {
   description = "Name of the Artifact Registry repository"
   type        = string
