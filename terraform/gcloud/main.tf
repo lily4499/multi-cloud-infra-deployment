@@ -30,7 +30,7 @@ module "gke" {
   region          = var.region
   cluster_name    = var.cluster_name
   node_count      = var.node_count
-  machine_type    = var.machine_type
+  machine_type_gke    = var.machine_type_gke
   min_node_count  = var.min_node_count
   max_node_count  = var.max_node_count
 }

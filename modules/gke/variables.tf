@@ -18,7 +18,7 @@ variable "node_count" {
   type        = number
 }
 
-variable "machine_type" {
+variable "machine_type_gke" {
   description = "Machine type for the GKE nodes"
   type        = string
 }
