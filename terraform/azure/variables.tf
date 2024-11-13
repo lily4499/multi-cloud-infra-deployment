@@ -107,13 +107,4 @@ variable "kubernetes_version" {
 }
 
 
-//variable "client_id" {
-//  description = "The Client ID for the Service Principal to create the AKS cluster"
-//  type        = string
-//}
 
-//variable "client_secret" {
-//  description = "The Client Secret for the Service Principal to create the AKS cluster"
-//  type        = string
-//  sensitive   = true
-//}

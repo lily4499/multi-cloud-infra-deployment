@@ -29,6 +29,6 @@ node_count            = 1
 node_vm_size          = "Standard_B2s"
 dns_prefix            = "myaksdns"
 kubernetes_version    = "1.23.5"
-//client_id             = "d061ea70-d69d-4f92-a224-f07db7e2a610"
+
 
 

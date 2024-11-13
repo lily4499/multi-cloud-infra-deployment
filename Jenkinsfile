@@ -29,10 +29,10 @@ pipeline {
                             bash scripts/azure_config.sh
         
                             # Export ARM environment variables for Terraform
-                            export ARM_CLIENT_ID=$AZURE_CLIENT_ID
-                            export ARM_CLIENT_SECRET=$AZURE_CLIENT_SECRET
-                            export ARM_TENANT_ID=$AZURE_TENANT_ID
-                            export ARM_SUBSCRIPTION_ID=$(az account show --query "id" -o tsv)
+                            #export ARM_CLIENT_ID=$AZURE_CLIENT_ID
+                            #export ARM_CLIENT_SECRET=$AZURE_CLIENT_SECRET
+                            #export ARM_TENANT_ID=$AZURE_TENANT_ID
+                            #export ARM_SUBSCRIPTION_ID=$(az account show --query "id" -o tsv)
 
                             '''
                         }

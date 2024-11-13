@@ -38,7 +38,6 @@ module "azure_aks" {
   node_vm_size      = var.node_vm_size
   dns_prefix        = var.dns_prefix
   kubernetes_version = var.kubernetes_version
-  //client_id         = var.client_id
-  //client_secret     = var.client_secret
+ 
 }
 
