@@ -35,7 +35,7 @@ output "kubernetes_cluster_name" {
 
 output "kubeconfig" {
   description = "Kubeconfig content to access the Kubernetes cluster"
-  value       = module.kubernetes_cluster.kubeconfig
+  value = digitalocean_kubernetes_cluster.this.kube_config[0].raw_config
   sensitive   = true
 }
 
