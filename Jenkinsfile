@@ -3,7 +3,7 @@ pipeline {
     parameters {
         choice(name: 'CLOUD_PROVIDER', choices: ['aws', 'azure', 'gcloud', 'digital_ocean'], description: 'Select the cloud provider for deployment')
         choice(name: 'ACTION', choices: ['apply', 'destroy'], description: 'Choose to apply or destroy the infrastructure')
-        choice(name: 'RESOURCE', choices: ['all', 'acr', 'aks', 'azure_VM', 'dok8s', 'do_registry', 'droplets', 'ec2', 'ecr', 'eks', 'artifact_registry', 'gke', 'google_Compute_Engine', 'rds'], description: 'Choose the resource(s) to deploy')
+        choice(name: 'RESOURCE', choices: ['all', 'acr', 'aks', 'azure_VM', 'dok8s', 'do_registry', 'droplets', 'ec2', 'ecr', 'eks', 'artifact_registry', 'gke', 'gce', 'rds'], description: 'Choose the resource(s) to deploy')
     }
     environment {
         AWS_CREDENTIALS_ID = 'aws-credentials-id'
