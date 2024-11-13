@@ -4,7 +4,7 @@ resource "google_container_cluster" "primary" {
   initial_node_count = var.node_count
 
   node_config {
-    gke_machine_type = var.gke_machine_type
+    machine_type = var.gke_machine_type
     oauth_scopes = [
       "https://www.googleapis.com/auth/cloud-platform",
     ]
@@ -23,7 +23,7 @@ resource "google_container_node_pool" "primary_nodes" {
   node_count = var.node_count
 
   node_config {
-    gke_machine_type = var.gke_machine_type
+    machine_type = var.gke_machine_type
     oauth_scopes = [
       "https://www.googleapis.com/auth/cloud-platform",
     ]
