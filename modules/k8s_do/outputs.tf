@@ -1,6 +1,6 @@
 output "kubeconfig" {
   description = "Kubeconfig content to access the Kubernetes cluster"
-  value       = digitalocean_kubernetes_cluster.this.kube_configs[0].raw_config
+  value       = digitalocean_kubernetes_cluster.this.kube_config[0].raw_config
 }
 
 output "cluster_name" {
