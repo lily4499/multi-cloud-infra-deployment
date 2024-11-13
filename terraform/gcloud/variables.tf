@@ -66,17 +66,17 @@ variable "subnetwork" {
 
 
 
-#GCR
-variable "location" {
-  description = "Location for the GCR repository (e.g., us, eu, asia)"
+#ARTIFARCT REGISTRY
+variable "repository_name" {
+  description = "Name of the Artifact Registry repository"
   type        = string
-  default     = "us"
+  default     = "my-artifact-repo"
 }
 
-variable "repository" {
-  description = "Name of the GCR repository"
+variable "repository_format" {
+  description = "Format of the repository (e.g., docker, maven, npm)"
   type        = string
-  default     = "my-container-repo"
+  default     = "docker"
 }
 
 

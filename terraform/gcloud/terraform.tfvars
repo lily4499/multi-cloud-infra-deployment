@@ -21,10 +21,11 @@ network    = "default"
 subnetwork = null                   # Can specify if using custom subnet
 
 
-#GCR
+#ARTIFACT REGISTRY
 
-location   = "us"
-repository = "gcr-container-repo"
+location          = "us-central1"
+repository_name   = "my-artifact-repo"
+repository_format = "docker"
 
 
 #GKE

@@ -6,11 +6,12 @@ output "instance_ip" {
 }
 
 
-#GCR
-output "gcr_repository_url" {
-  description = "The URL of the GCR repository"
-  value       = module.gcr.repository_url
+#ARTIFACT REGISTRY
+output "artifact_registry_url" {
+  description = "The URL of the Artifact Registry repository"
+  value       = module.artifact_registry.repository_url
 }
+
 
 
 #GKE

@@ -13,13 +13,14 @@ module "gce_instance" {
 }
 
 
-#GCR
+#artifact_registry
 
-module "gcr" {
-  source      = "../../modules/gcr"
-  project_id  = var.project_id
-  location    = var.location
-  repository  = var.repository
+module "artifact_registry" {
+  source       = "../../modules/artifact_registry"
+  project_id   = var.project_id
+  location     = var.location
+  repository   = var.repository_name
+  repository_format = var.repository_format
 }
 
 

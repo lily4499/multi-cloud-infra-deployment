@@ -3,7 +3,7 @@ pipeline {
     parameters {
         choice(name: 'CLOUD_PROVIDER', choices: ['aws', 'azure', 'gcloud', 'digital_ocean'], description: 'Select the cloud provider for deployment')
         choice(name: 'ACTION', choices: ['apply', 'destroy'], description: 'Choose to apply or destroy the infrastructure')
-        choice(name: 'RESOURCE', choices: ['all', 'acr', 'aks', 'azure_VM', 'dok8s', 'doregistry', 'droplets', 'ec2', 'ecr', 'eks', 'gcr', 'gke', 'google_Compute_Engine', 'rds'], description: 'Choose the resource(s) to deploy')
+        choice(name: 'RESOURCE', choices: ['all', 'acr', 'aks', 'azure_VM', 'dok8s', 'do_registry', 'droplets', 'ec2', 'ecr', 'eks', 'artifact_registry', 'gke', 'google_Compute_Engine', 'rds'], description: 'Choose the resource(s) to deploy')
     }
     environment {
         AWS_CREDENTIALS_ID = 'aws-credentials-id'
@@ -126,11 +126,11 @@ def deployGcloudResources() {
         sh 'terraform init'
         sh "terraform ${params.ACTION} -target=module.gce_instance -auto-approve"
     }
-    if (params.RESOURCE == 'all' || params.RESOURCE == 'gcr') {
+    if (params.RESOURCE == 'all' || params.RESOURCE == 'artifact_registry') {
         echo "Deploying Google Container Registry (GCR)..."
-        sh 'export GOOGLE_APPLICATION_CREDENTIALS=$GOOGLE_APPLICATION_CREDENTIALS'
+      //  sh 'export GOOGLE_APPLICATION_CREDENTIALS=$GOOGLE_APPLICATION_CREDENTIALS'
         sh 'terraform init'
-        sh "terraform ${params.ACTION} -target=module.gcr -auto-approve"
+        sh "terraform ${params.ACTION} -target=module.artifact_registry -auto-approve"
     }
     if (params.RESOURCE == 'all' || params.RESOURCE == 'gke') {
         echo "Deploying Google Kubernetes Engine (GKE)..."
