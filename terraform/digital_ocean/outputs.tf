@@ -1,14 +1,15 @@
 # Outputs for resources created by the modules
 
-output "droplet_ips" {
-  description = "Public IP addresses of the Droplets"
-  value       = module.droplets.droplet_ips
+output "droplet_ip" {
+  description = "Public IP address of the Droplet"
+  value       = module.droplets.droplet_ip  # Change to reference the singular output
 }
 
-output "droplet_ids" {
-  description = "IDs of the Droplets"
-  value       = module.droplets.droplet_ids
+output "droplet_id" {
+  description = "ID of the Droplet"
+  value       = module.droplets.droplet_id  # Change to reference the singular output
 }
+
 
 
 
