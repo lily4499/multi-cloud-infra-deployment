@@ -32,10 +32,7 @@ pipeline {
                             export ARM_CLIENT_ID=$AZURE_CLIENT_ID
                             export ARM_CLIENT_SECRET=$AZURE_CLIENT_SECRET
                             export ARM_TENANT_ID=$AZURE_TENANT_ID
-<<<<<<< HEAD
                             export ARM_SUBSCRIPTION_ID=$(az account show --query "id" -o tsv)
-=======
->>>>>>> 25e66d8 (azure setup)
 
                             '''
                         }
