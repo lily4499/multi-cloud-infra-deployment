@@ -150,6 +150,7 @@ def deployGcloudResources() {
 def deployDigitalOceanResources() {
     if (params.RESOURCE == 'all' || params.RESOURCE == 'droplet') {
         echo "Deploying DigitalOcean Droplet..."
+        sh 'rm -rf .terraform'
         sh 'terraform init'
         sh "terraform ${params.ACTION} -target=module.droplets -auto-approve"
     }
