@@ -87,7 +87,7 @@ variable "node_count" {
   default     = 1
 }
 
-variable "machine_type_gke" {
+variable "gke_machine_type" {
   description = "Machine type for the GKE nodes"
   type        = string
   default     = "e2-medium"

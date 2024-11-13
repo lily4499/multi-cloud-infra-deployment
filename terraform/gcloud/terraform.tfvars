@@ -31,6 +31,6 @@ repository = "gcr-container-repo"
 
 cluster_name   = "gke-cluster"
 node_count     = 1
-machine_type_gke   = "e2-medium"
+gke_machine_type   = "e2-medium"
 min_node_count = 1
 max_node_count = 3
