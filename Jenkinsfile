@@ -147,27 +147,51 @@ def deployGcloudResources() {
     }
 }
 
+
 def deployDigitalOceanResources() {
     if (params.RESOURCE == 'all' || params.RESOURCE == 'droplet') {
         echo "Deploying DigitalOcean Droplet..."
-        sh '''
+        sh """
         terraform init
         terraform ${params.ACTION} -target=module.droplets -auto-approve -var="DIGITALOCEAN_TOKEN=$DIGITALOCEAN_TOKEN"
-        '''
+        """
     }
 
     if (params.RESOURCE == 'all' || params.RESOURCE == 'do_registry') {
         echo "Deploying DigitalOcean Container Registry..."
-        sh '''
+        sh """
         terraform init
         terraform ${params.ACTION} -target=module.registry -auto-approve -var="DIGITALOCEAN_TOKEN=$DIGITALOCEAN_TOKEN"
-        '''
+        """
     }
     if (params.RESOURCE == 'all' || params.RESOURCE == 'k8s_do') {
         echo "Deploying DigitalOcean Kubernetes..."
-        sh '''
+        sh """
         terraform init
         terraform ${params.ACTION} -target=module.kubernetes_cluster -auto-approve -var="DIGITALOCEAN_TOKEN=$DIGITALOCEAN_TOKEN"
-        '''
+        """
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
