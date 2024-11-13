@@ -9,7 +9,7 @@ terraform {
 
 
 
-resource "digitalocean_kubernetes_cluster" "this" {
+resource "digitalocean_kubernetes_cluster" "do_cluster" {
   name    = var.cluster_name
   region  = var.region
   version = var.kubernetes_version
