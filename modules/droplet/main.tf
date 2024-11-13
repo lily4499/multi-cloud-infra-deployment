@@ -9,7 +9,7 @@ terraform {
 
 
 resource "digitalocean_droplet" "this" {
-  count       = var.droplet_count
+  droplet_count       = var.droplet_count
   name        = "${var.droplet_name}-${count.index + 1}"
   region      = var.region
   size        = var.size
