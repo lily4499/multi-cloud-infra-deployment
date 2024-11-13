@@ -31,7 +31,7 @@ subscription_tier_slug = "starter"  # Options include 'starter', 'basic', etc.
 # Kubernetes cluster configuration
 cluster_name        = "my-k8s-cluster"
 node_pool_name      = "default-pool"
-node_count          = 3
+node_count          = 1
 node_size           = "s-2vcpu-4gb"
 kubernetes_version  = "1.22.8-do.0"
 #tags                = ["k8s", "production"]
