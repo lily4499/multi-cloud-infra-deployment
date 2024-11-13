@@ -121,20 +121,20 @@ def deployAzureResources() {
 }
 
 def deployGcloudResources() {
-    if (params.RESOURCE == 'all' || params.RESOURCE == 'google_Compute_Engine') {
+    if (params.RESOURCE == 'all' || params.RESOURCE == 'gce') {
         echo "Deploying Google Compute Engine (GCE) VM..."
         sh 'terraform init'
-        sh "terraform ${params.ACTION} -target=google_compute_instance.vm -auto-approve"
+        sh "terraform ${params.ACTION} -target=module.gce_instance -auto-approve"
     }
     if (params.RESOURCE == 'all' || params.RESOURCE == 'gcr') {
         echo "Deploying Google Container Registry (GCR)..."
         sh 'terraform init'
-        sh "terraform ${params.ACTION} -target=google_container_registry.registry -auto-approve"
+        sh "terraform ${params.ACTION} -target=module.gcr -auto-approve"
     }
     if (params.RESOURCE == 'all' || params.RESOURCE == 'gke') {
         echo "Deploying Google Kubernetes Engine (GKE)..."
         sh 'terraform init'
-        sh "terraform ${params.ACTION} -target=module.gke_cluster -auto-approve"
+        sh "terraform ${params.ACTION} -target=module.gke -auto-approve"
     }
 }
 
