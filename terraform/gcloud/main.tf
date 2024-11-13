@@ -3,6 +3,7 @@
 #GCE
 module "gce_instance" {
   source        = "../../modules/gce"
+  zone          = var.zone 
   instance_name = var.instance_name
   machine_type  = var.machine_type
   disk_size_gb  = var.disk_size_gb
