@@ -8,7 +8,6 @@ module "droplets" {
   region       = var.region
   size         = var.size
   image        = var.image
-  droplet_count       = var.droplet_count
 }
 
 
