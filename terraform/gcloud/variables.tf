@@ -1,4 +1,11 @@
 
+variable "google_credentials_file" {
+  description = "Path to the Google Cloud credentials file"
+  type        = string
+  default     = "/var/jenkins_home/google-key-file.json"
+}
+
+
 
 variable "project_id" {
   description = "Google Cloud project ID"
