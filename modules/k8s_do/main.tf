@@ -17,7 +17,7 @@ resource "digitalocean_kubernetes_cluster" "this" {
   node_pool {
     name  = var.node_pool_name
     size  = var.node_size
-    count = var.node_count  # Specify the number of nodes here
+    node_count = var.node_count  # Specify the number of nodes here
     tags  = var.tags
   }
 }
