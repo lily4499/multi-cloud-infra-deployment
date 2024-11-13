@@ -1,9 +1,9 @@
 # Define variables for the Terraform configuration
 
-#variable "do_token" {
-#  description = "DigitalOcean API token"
-#  type        = string
-#}
+variable "DIGITALOCEAN_TOKEN" {
+  type = string
+}
+
 
 variable "region" {
   description = "Region to deploy the Droplets in"
@@ -37,6 +37,13 @@ variable "droplet_count" {
   type        = number
   default     = 1
 }
+
+variable "ssh_keys" {
+  type        = list(string)
+  description = "List of SSH key fingerprints to be added to the droplet"
+}
+
+
 
 
 

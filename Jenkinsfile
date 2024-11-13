@@ -162,6 +162,6 @@ def deployDigitalOceanResources() {
     if (params.RESOURCE == 'all' || params.RESOURCE == 'k8s_do') {
         echo "Deploying DigitalOcean Kubernetes..."
         sh 'terraform init'
-        sh "terraform ${params.ACTION} -target=module.dok8s_cluster -auto-approve"
+        sh "terraform ${params.ACTION} -target=module.kubernetes_cluster -auto-approve"
     }
 }
