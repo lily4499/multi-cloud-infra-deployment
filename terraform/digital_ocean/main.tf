@@ -1,18 +1,35 @@
 # Main Terraform configuration for using modules
 
-provider "digitalocean" {
-  token = var.do_token
+
+# Create droplets by calling the module
+module "droplets" {
+  source       = "../../modules/droplet"
+  droplet_name = var.droplet_name
+  region       = var.region
+  size         = var.size
+  image        = var.image
+  count        = var.droplet_count
 }
 
-# DigitalOcean Kubernetes (DOK8s) Module
-module "dok8s" {
-  source        = "../../modules/dok8s_cluster"
-  cluster_name  = var.dok8s_cluster_name
-  node_count    = var.node_count
-  node_size     = var.node_size
+
+# Call the registry module to create a DigitalOcean Container Registry
+module "registry" {
+  source         = "../../modules/registry"
+  registry_name  = var.registry_name
+  subscription_tier_slug = var.subscription_tier_slug
+  region         = var.region
 }
 
-# DigitalOcean Container Registry
-resource "digitalocean_container_registry" "do_registry" {
-  name = var.do_registry_name
+
+
+# Call the Kubernetes module to create a DigitalOcean Kubernetes cluster
+module "kubernetes_cluster" {
+  source            = "./modules/kubernetes"
+  cluster_name      = var.cluster_name
+  region            = var.region
+  node_pool_name    = var.node_pool_name
+  node_count        = var.node_count
+  node_size         = var.node_size
+  kubernetes_version = var.kubernetes_version
+  tags              = var.tags
 }

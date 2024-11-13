@@ -24,7 +24,7 @@ subnetwork = null                   # Can specify if using custom subnet
 #ARTIFACT REGISTRY
 
 location          = "us-central1"
-repository_name   = "my-artifact-repo"
+repository_name   = "gc-artifact-repo"
 repository_format = "docker"
 
 

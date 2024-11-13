@@ -3,14 +3,22 @@ pipeline {
     parameters {
         choice(name: 'CLOUD_PROVIDER', choices: ['aws', 'azure', 'gcloud', 'digital_ocean'], description: 'Select the cloud provider for deployment')
         choice(name: 'ACTION', choices: ['apply', 'destroy'], description: 'Choose to apply or destroy the infrastructure')
-        choice(name: 'RESOURCE', choices: ['all', 'acr', 'aks', 'azure_VM', 'dok8s', 'do_registry', 'droplets', 'ec2', 'ecr', 'eks', 'artifact_registry', 'gke', 'gce', 'rds'], description: 'Choose the resource(s) to deploy')
+        choice(name: 'RESOURCE', choices: ['all', 'acr', 'aks', 'azure_VM', 'k8s_do', 'do_registry', 'droplet', 'ec2', 'ecr', 'eks', 'artifact_registry', 'gke', 'gce', 'rds'], description: 'Choose the resource(s) to deploy')
     }
     environment {
-        AWS_CREDENTIALS_ID = 'aws-credentials-id'
-        AZURE_CREDENTIALS_ID = 'azure-credentials-id'
-        AZURE_TENANT_ID = 'azure-tenant-id'
-        GCLOUD_CREDENTIALS_ID = 'gcloud-credentials-id'
-        DIGITALOCEAN_CREDENTIALS_ID = 'digitalocean-credentials-id'
+      //  AWS_CREDENTIALS_ID = 'aws-credentials-id'
+      //  AZURE_CREDENTIALS_ID = 'azure-credentials-id'
+      //  AZURE_TENANT_ID = 'azure-tenant-id'
+      //  GCLOUD_CREDENTIALS_ID = 'gcloud-credentials-id'
+      //  DIGITALOCEAN_CREDENTIALS_ID = 'digitalocean-credentials-id'
+
+        AWS_CREDENTIALS_ID = credentials('aws-credentials-id')
+        AZURE_CREDENTIALS_ID = credentials('azure-credentials-id')
+        AZURE_TENANT_ID = credentials('azure-tenant-id')
+        GCLOUD_CREDENTIALS_ID = credentials('gcloud-credentials-id')
+        DIGITALOCEAN_TOKEN = credentials('digitalocean-credentials-id')
+
+
         
     }
     stages {
@@ -140,19 +148,19 @@ def deployGcloudResources() {
 }
 
 def deployDigitalOceanResources() {
-    if (params.RESOURCE == 'all' || params.RESOURCE == 'droplets') {
+    if (params.RESOURCE == 'all' || params.RESOURCE == 'droplet') {
         echo "Deploying DigitalOcean Droplet..."
         sh 'terraform init'
-        sh "terraform ${params.ACTION} -target=digitalocean_droplet.vm -auto-approve"
+        sh "terraform ${params.ACTION} -var="do_token=$DIGITALOCEAN_TOKEN" -target=module.droplets -auto-approve"
     }
-    if (params.RESOURCE == 'all' || params.RESOURCE == 'doregistry') {
+    if (params.RESOURCE == 'all' || params.RESOURCE == 'do_registry') {
         echo "Deploying DigitalOcean Container Registry..."
         sh 'terraform init'
-        sh "terraform ${params.ACTION} -target=digitalocean_container_registry.registry -auto-approve"
+        sh "terraform ${params.ACTION} -var="do_token=$DIGITALOCEAN_TOKEN" -target=digitalocean_container_registry.registry -auto-approve"
     }
-    if (params.RESOURCE == 'all' || params.RESOURCE == 'dok8s') {
+    if (params.RESOURCE == 'all' || params.RESOURCE == 'k8s_do') {
         echo "Deploying DigitalOcean Kubernetes..."
         sh 'terraform init'
-        sh "terraform ${params.ACTION} -target=module.dok8s_cluster -auto-approve"
+        sh "terraform ${params.ACTION} -var="do_token=$DIGITALOCEAN_TOKEN" -target=module.dok8s_cluster -auto-approve"
     }
 }
