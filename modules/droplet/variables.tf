@@ -18,7 +18,7 @@ variable "image" {
   type        = string
 }
 
-variable "count" {
+variable "droplet_count" {
   description = "Number of Droplets to create"
   type        = number
 }

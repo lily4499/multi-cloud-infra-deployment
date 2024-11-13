@@ -4,11 +4,3 @@ resource "digitalocean_container_registry" "this" {
   region            = var.region
 }
 
-# Outputs
-output "registry_name" {
-  value = digitalocean_container_registry.this.name
-}
-
-output "registry_endpoint" {
-  value = digitalocean_container_registry.this.endpoint
-}
