@@ -49,7 +49,7 @@ pipeline {
                             sh 'bash scripts/gcloud_config.sh'
                         }
                     } else if (params.CLOUD_PROVIDER == 'digital_ocean') {
-                        withCredentials([string(credentialsId: DIGITALOCEAN_CREDENTIALS_ID, variable: 'DIGITALOCEAN_ACCESS_TOKEN')]) {
+                        withCredentials([string(credentialsId: 'digitalocean-credentials-id', variable: 'DIGITALOCEAN_TOKEN')]) {
                             sh 'bash scripts/digitalocean_config.sh'
                         }
                     }
@@ -151,16 +151,16 @@ def deployDigitalOceanResources() {
     if (params.RESOURCE == 'all' || params.RESOURCE == 'droplet') {
         echo "Deploying DigitalOcean Droplet..."
         sh 'terraform init'
-        sh "terraform ${params.ACTION} -var="do_token=$DIGITALOCEAN_TOKEN" -target=module.droplets -auto-approve"
+        sh "terraform ${params.ACTION} -target=module.droplets -auto-approve"
     }
     if (params.RESOURCE == 'all' || params.RESOURCE == 'do_registry') {
         echo "Deploying DigitalOcean Container Registry..."
         sh 'terraform init'
-        sh "terraform ${params.ACTION} -var="do_token=$DIGITALOCEAN_TOKEN" -target=digitalocean_container_registry.registry -auto-approve"
+        sh "terraform ${params.ACTION} -target=digitalocean_container_registry.registry -auto-approve"
     }
     if (params.RESOURCE == 'all' || params.RESOURCE == 'k8s_do') {
         echo "Deploying DigitalOcean Kubernetes..."
         sh 'terraform init'
-        sh "terraform ${params.ACTION} -var="do_token=$DIGITALOCEAN_TOKEN" -target=module.dok8s_cluster -auto-approve"
+        sh "terraform ${params.ACTION} -target=module.dok8s_cluster -auto-approve"
     }
 }

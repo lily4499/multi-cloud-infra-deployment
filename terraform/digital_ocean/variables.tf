@@ -1,9 +1,9 @@
 # Define variables for the Terraform configuration
 
-variable "do_token" {
-  description = "DigitalOcean API token"
-  type        = string
-}
+#variable "do_token" {
+#  description = "DigitalOcean API token"
+#  type        = string
+#}
 
 variable "region" {
   description = "Region to deploy the Droplets in"
