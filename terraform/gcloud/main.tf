@@ -2,7 +2,7 @@
 
 #GCE
 module "gce_instance" {
-  source        = "../../gce
+  source        = "../../modules/gce"
   instance_name = var.instance_name
   machine_type  = var.machine_type
   disk_size_gb  = var.disk_size_gb
@@ -15,7 +15,7 @@ module "gce_instance" {
 #GCR
 
 module "gcr" {
-  source      = "../../gcr"
+  source      = "../../modules/gcr"
   project_id  = var.project_id
   location    = var.location
   repository  = var.repository
@@ -25,7 +25,7 @@ module "gcr" {
 #GKE
 
 module "gke" {
-  source          = "../../gke"
+  source          = "../../modules/gke"
   project_id      = var.project_id
   region          = var.region
   cluster_name    = var.cluster_name
