@@ -18,10 +18,6 @@ variable "image" {
   type        = string
 }
 
-variable "droplet_count" {
-  description = "Number of Droplets to create"
-  type        = number
-}
 
 variable "ssh_keys" {
   description = "List of SSH keys to attach to the Droplets"

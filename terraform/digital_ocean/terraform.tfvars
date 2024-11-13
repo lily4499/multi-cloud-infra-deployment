@@ -9,7 +9,6 @@ region         = "nyc3"
 droplet_name   = "my-droplet"
 size           = "s-1vcpu-1gb"
 image          = "ubuntu-20-04-x64"
-droplet_count  = 1
 
 # Optional - SSH keys and tags
 ssh_keys = ["42135578"] # Replace with your actual SSH key ID(s)

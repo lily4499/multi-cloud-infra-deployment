@@ -32,11 +32,6 @@ variable "image" {
   default     = "ubuntu-20-04-x64"
 }
 
-variable "droplet_count" {
-  description = "Number of Droplets to create"
-  type        = number
-  default     = 1
-}
 
 variable "ssh_keys" {
   type        = list(string)
