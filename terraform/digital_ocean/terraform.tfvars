@@ -35,4 +35,4 @@ node_pool_name      = "default-pool"
 node_count          = 3
 node_size           = "s-2vcpu-4gb"
 kubernetes_version  = "1.22.8-do.0"
-tags                = ["k8s", "production"]
+#tags                = ["k8s", "production"]
