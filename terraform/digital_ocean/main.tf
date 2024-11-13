@@ -23,8 +23,8 @@ module "registry" {
 
 
 # Call the Kubernetes module to create a DigitalOcean Kubernetes cluster
-module "kubernetes_cluster" {
-  source            = "./modules/kubernetes"
+module "dok8s_cluster " {
+  source            = "../../modules/k8s_do"
   cluster_name      = var.cluster_name
   region            = var.region
   node_pool_name    = var.node_pool_name

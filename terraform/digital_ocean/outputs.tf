@@ -26,6 +26,8 @@ output "registry_endpoint" {
 
 
 
+
+
 output "kubernetes_cluster_name" {
   description = "Name of the Kubernetes cluster"
   value       = module.kubernetes_cluster.cluster_name

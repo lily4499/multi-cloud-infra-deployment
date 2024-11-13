@@ -156,7 +156,7 @@ def deployDigitalOceanResources() {
     if (params.RESOURCE == 'all' || params.RESOURCE == 'do_registry') {
         echo "Deploying DigitalOcean Container Registry..."
         sh 'terraform init'
-        sh "terraform ${params.ACTION} -target=digitalocean_container_registry.registry -auto-approve"
+        sh "terraform ${params.ACTION} -target=module.registry -auto-approve"
     }
     if (params.RESOURCE == 'all' || params.RESOURCE == 'k8s_do') {
         echo "Deploying DigitalOcean Kubernetes..."

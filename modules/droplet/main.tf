@@ -8,11 +8,3 @@ resource "digitalocean_droplet" "this" {
   tags        = var.tags
 }
 
-# Provide outputs for each created droplet
-output "droplet_ips" {
-  value = [for droplet in digitalocean_droplet.this : droplet.ipv4_address]
-}
-
-output "droplet_ids" {
-  value = [for droplet in digitalocean_droplet.this : droplet.id]
-}
