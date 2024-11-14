@@ -8,7 +8,7 @@ key_name           = "ec2-key"
 instance_count     = 1
 
 #ECR
-ecr_repo_name   = "my-app-repo"
+ecr_repo_name   = "ecr-app-repo"
 
 
 #EKS

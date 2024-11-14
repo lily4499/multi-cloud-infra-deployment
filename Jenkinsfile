@@ -6,17 +6,17 @@ pipeline {
         choice(name: 'RESOURCE', choices: ['all', 'acr', 'aks', 'azure_VM', 'k8s_do', 'do_registry', 'droplet', 'ec2', 'ecr', 'eks', 'artifact_registry', 'gke', 'gce', 'rds'], description: 'Choose the resource(s) to deploy')
     }
     environment {
-      //  AWS_CREDENTIALS_ID = 'aws-credentials-id'
-      //  AZURE_CREDENTIALS_ID = 'azure-credentials-id'
-      //  AZURE_TENANT_ID = 'azure-tenant-id'
-      //  GCLOUD_CREDENTIALS_ID = 'gcloud-credentials-id'
-      //  DIGITALOCEAN_CREDENTIALS_ID = 'digitalocean-credentials-id'
+       AWS_CREDENTIALS_ID = 'aws-credentials-id'
+       AZURE_CREDENTIALS_ID = 'azure-credentials-id'
+       AZURE_TENANT_ID = 'azure-tenant-id'
+       GCLOUD_CREDENTIALS_ID = 'gcloud-credentials-id'
+       DIGITALOCEAN_CREDENTIALS_ID = 'digitalocean-credentials-id'
 
-        AWS_CREDENTIALS_ID = credentials('aws-credentials-id')
-        AZURE_CREDENTIALS_ID = credentials('azure-credentials-id')
-        AZURE_TENANT_ID = credentials('azure-tenant-id')
-        GCLOUD_CREDENTIALS_ID = credentials('gcloud-credentials-id')
-        DIGITALOCEAN_TOKEN = credentials('digitalocean-credentials-id')
+        // AWS_CREDENTIALS_ID = credentials('aws-credentials-id')
+        // AZURE_CREDENTIALS_ID = credentials('azure-credentials-id')
+        // AZURE_TENANT_ID = credentials('azure-tenant-id')
+        // GCLOUD_CREDENTIALS_ID = credentials('gcloud-credentials-id')
+        // DIGITALOCEAN_TOKEN = credentials('digitalocean-credentials-id')
 
 
         
