@@ -33,5 +33,5 @@ cluster_name        = "do-k8s-cluster"
 node_pool_name      = "default-pool"
 node_count          = 1
 node_size           = "s-2vcpu-4gb"
-kubernetes_version  = "1.22.8-do.0"
+kubernetes_version  = "1.31.1-do.4"  # Update to a valid slug
 #tags                = ["k8s", "production"]
