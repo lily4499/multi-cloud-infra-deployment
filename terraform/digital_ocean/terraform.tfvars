@@ -19,7 +19,7 @@ tags     = ["web", "production"]
 
 
 # Registry configuration
-registry_name         = "my-registry"
+registry_name         = "dolilregistry"
 subscription_tier_slug = "starter"  # Options include 'starter', 'basic', etc.
 
 
@@ -29,7 +29,7 @@ subscription_tier_slug = "starter"  # Options include 'starter', 'basic', etc.
 
 
 # Kubernetes cluster configuration
-cluster_name        = "k8s-cluster"
+cluster_name        = "do-k8s-cluster"
 node_pool_name      = "default-pool"
 node_count          = 1
 node_size           = "s-2vcpu-4gb"

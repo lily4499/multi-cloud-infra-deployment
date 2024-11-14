@@ -10,13 +10,13 @@ pipeline {
        AZURE_CREDENTIALS_ID = 'azure-credentials-id'
        AZURE_TENANT_ID = 'azure-tenant-id'
        GCLOUD_CREDENTIALS_ID = 'gcloud-credentials-id'
-       DIGITALOCEAN_CREDENTIALS_ID = 'digitalocean-credentials-id'
+       //DIGITALOCEAN_CREDENTIALS_ID = 'digitalocean-credentials-id'
 
         // AWS_CREDENTIALS_ID = credentials('aws-credentials-id')
         // AZURE_CREDENTIALS_ID = credentials('azure-credentials-id')
         // AZURE_TENANT_ID = credentials('azure-tenant-id')
         // GCLOUD_CREDENTIALS_ID = credentials('gcloud-credentials-id')
-        // DIGITALOCEAN_TOKEN = credentials('digitalocean-credentials-id')
+        DIGITALOCEAN_TOKEN = credentials('digitalocean-credentials-id')
 
 
         
