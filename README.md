@@ -9,6 +9,17 @@ GCLOUD_CREDENTIALS_ID    	Google Cloud Service Account JSON key	              Se
 
 
 
+| **Credential Name**       | **Description**                                    | **Credential Type**                  | **Value** or **Input**                     | **Scope** |
+|----------------------------|----------------------------------------------------|---------------------------------------|---------------------------------------------|-----------|
+| **AWS_CREDENTIALS_ID**     | AWS Access Key ID and Secret Access Key pair      | AWS Credentials                      | Enter the **Access Key ID** and **Secret Key** for your AWS account | Global    |
+| **AZURE_CREDENTIALS_ID**   | Azure Service Principal credentials               | Microsoft Azure Service Principal     | Enter **Client ID**, **Client Secret**, **Tenant ID**, and **Subscription ID** | Global    |
+| **AZURE_TENANT_ID**        | Azure Active Directory Tenant ID                  | Secret Text                          | Enter your Azure **Tenant ID**              | Global    |
+| **GCLOUD_CREDENTIALS_ID**  | Google Cloud Service Account JSON key             | Secret File                          | Upload the JSON key file of the GCP Service Account | Global    |
+
+
+
+
+
 Steps to Set Up Each Credential in Jenkins:
 
     Log in to Jenkins: Open Jenkins Dashboard.
