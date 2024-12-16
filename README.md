@@ -4,7 +4,7 @@ Here’s the table for setting up Jenkins credentials with the specified types f
 
 | **Provider**       | **Credential Type**         | **Jenkins Credential Kind**   | **Details**                                                                 | **Example Credential ID**        |
 |---------------------|-----------------------------|--------------------------------|-----------------------------------------------------------------------------|-----------------------------------|
-| **AWS**            | Access Key ID and Secret Key | Username with Password         | - Username: `"AWS"`<br>- Password: AWS Secret Key.<br>- Used for Docker login with ECR. | `aws-credentials-id`             |
+| **AWS**            | Access Key ID and Secret Key | Username with Password         | - Username: AWS Access key.<br>- Password: AWS Secret Key.<br>- Used for Terraform. | `aws-credentials-id`             |
 | **Azure**          | Service Principal           | Username with Password         | - Username: Azure Client ID.<br>- Password: Azure Client Secret.<br>- Used for Terraform and ACR. | `azure-credentials-id`           |
 | **DockerHub**       | Username and Password       | Username with Password         | - Username: DockerHub Username.<br>- Password: DockerHub Password.<br>- Used for Docker CLI. | `dockerhub-credentials-id`       |
 | **DigitalOcean**    | API Token                  | Secret Text                    | - Secret Text: DigitalOcean API Token.<br>- Used for Terraform and Container Registry. | `digitalocean-credentials-id`    |
