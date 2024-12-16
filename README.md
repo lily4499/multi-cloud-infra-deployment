@@ -104,13 +104,15 @@ kubectl create secret docker-registry my-pull-secret \
     Replace <openshift-username> with your OpenShift username.
     Replace <email> with your email address.
 
-Notes
 
-    Replace <registry-url>, <username>, <password>, and <email> with the appropriate values for each provider.
-    Ensure that you have the necessary CLI tools (e.g., kubectl, aws, az, doctl, gcloud, oc) installed and authenticated.
-    After creating the secret, you can reference it in your Kubernetes deployment or pod specification:
 
-imagePullSecrets:
+
+Then reference this secret in your Pod or Deployment YAML under imagePullSecrets:
+spec:
+  containers:
+  - name: my-app
+    image: myregistry/myapp:latest
+  imagePullSecrets:
   - name: my-pull-secret
 
 This ensures your Kubernetes pods can authenticate to private container registries.
