@@ -1,3 +1,42 @@
+Here’s a Markdown table for setting up Jenkins credentials to use Terraform with AWS, Azure, DigitalOcean, and Google Cloud, including the required plugins:
+
+
+# Setting Up Jenkins Credentials for Terraform Integration
+
+| **Provider**       | **Credential Type**               | **Jenkins Credential Kind**       | **Details**                                                                 | **Example Credential ID**  | **Required Plugin**                                              |
+|---------------------|-----------------------------------|------------------------------------|-----------------------------------------------------------------------------|-----------------------------|-------------------------------------------------------------------|
+| **AWS**            | AWS Access Key ID and Secret Key | AWS Credentials                   | - Add AWS Access Key ID and Secret Key.<br>- Required for Terraform AWS Provider. | `aws-terraform-credentials` | [AWS Credentials Plugin](https://plugins.jenkins.io/aws-credentials/) |
+| **Azure**          | Azure Service Principal          | Microsoft Azure Service Principal | - Add Azure Client ID, Client Secret, Tenant ID, and Subscription ID.<br>- Required for Terraform Azure Provider. | `azure-terraform-credentials` | [Azure Credentials Plugin](https://plugins.jenkins.io/azure-credentials/) |
+| **DigitalOcean**    | API Token                        | Secret Text                       | - Add the DigitalOcean API token.<br>- Required for Terraform DigitalOcean Provider. | `digitalocean-terraform-credentials` | [Plain Credentials Plugin](https://plugins.jenkins.io/plain-credentials/) |
+| **Google Cloud**    | Service Account JSON Key         | Secret File                       | - Upload the GCP Service Account JSON key.<br>- Required for Terraform GCP Provider. | `gcloud-terraform-credentials` | [Google OAuth Plugin](https://plugins.jenkins.io/google-oauth-plugin/) |
+
+---
+
+
+Here’s the Markdown table to document how to set up Jenkins credentials for AWS ECR, Azure ACR, DigitalOcean Registry, and Google Cloud GCR, including the required plugins:
+
+# Setting Up Jenkins Credentials for Container Registries
+
+# Setting Up Jenkins Credentials for Container Registries
+
+| **Provider**       | **Credential Type**               | **Jenkins Credential Kind**       | **Details**                                                                 | **Example Credential ID**  | **Required Plugin**                                              |
+|---------------------|-----------------------------------|------------------------------------|-----------------------------------------------------------------------------|-----------------------------|-------------------------------------------------------------------|
+| **AWS ECR**         | AWS Access Key ID and Secret Key | AWS Credentials                   | - Add AWS Access Key ID and Secret Key.<br>- Use `aws ecr get-login-password` for Docker authentication. | `aws-credentials-id`         | [AWS Credentials Plugin](https://plugins.jenkins.io/aws-credentials/) |
+| **Azure ACR**       | Azure Service Principal          | Microsoft Azure Service Principal | - Add Azure Client ID, Client Secret, Tenant ID, and Subscription ID.<br>- Authenticate with `az acr login`. | `azure-credentials-id`       | [Azure Credentials Plugin](https://plugins.jenkins.io/azure-credentials/) |
+| **DigitalOcean**    | API Token                        | Secret Text                       | - Add the DigitalOcean API token.<br>- Authenticate with `docker login`.    | `digitalocean-credentials-id` | [Plain Credentials Plugin](https://plugins.jenkins.io/plain-credentials/) |
+| **Google Cloud GCR**| Service Account JSON Key         | Secret File                       | - Upload the GCP Service Account JSON key.<br>- Use `gcloud auth configure-docker` for Docker authentication. | `gcloud-credentials-id`      | [Google OAuth Plugin](https://plugins.jenkins.io/google-oauth-plugin/) |
+
+---
+
+
+
+
+
+
+
+
+
+
 Here's a table to set up the specified Jenkins credentials:
 
 
