@@ -177,7 +177,27 @@ def deployDigitalOceanResources() {
         terraform ${params.ACTION} -target=module.kubernetes_cluster -auto-approve -var="DIGITALOCEAN_TOKEN=$DIGITALOCEAN_TOKEN"
         """
     }
+
+    post {
+        always {
+            stage('Cleanup') {
+                steps {
+                    echo 'Performing cleanup...'
+                    // Clean up workspace
+                    cleanWs() // Provided by Workspace Cleanup plugin
+                    // Remove any temporary Terraform files
+                    sh '''
+                        echo "Removing Terraform artifacts..."
+                        rm -rf .terraform terraform.tfstate terraform.tfstate.backup
+                    '''
+                }
+            }
+        }
+    }
 }
+
+
+    
 
 
 
