@@ -33,6 +33,8 @@ Here’s the table with CLI commands for logging into each provider and its resp
 
 
 Here are the kubectl commands for creating a Docker registry secret (my-pull-secret) for each provider:
+
+
 AWS Elastic Container Registry (ECR)
 
 kubectl create secret docker-registry my-pull-secret \
