@@ -108,11 +108,13 @@ kubectl create secret docker-registry my-pull-secret \
 
 
 Then reference this secret in your Pod or Deployment YAML under imagePullSecrets:
+```yaml
 spec:
   containers:
   - name: my-app
     image: myregistry/myapp:latest
   imagePullSecrets:
   - name: my-pull-secret
+
 
 This ensures your Kubernetes pods can authenticate to private container registries.
