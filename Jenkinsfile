@@ -22,6 +22,12 @@ pipeline {
         
     }
     stages {
+        stage('Cleanup Workspace') {
+            steps {
+                echo 'Cleaning up workspace at the start...'
+                cleanWs() // Cleans the workspace at the start of the pipeline
+            }
+        }
         stage('Setup Credentials') {
             steps {
                 script {
