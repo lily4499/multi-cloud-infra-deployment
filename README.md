@@ -36,7 +36,7 @@ Here are the kubectl commands for creating a Docker registry secret (my-pull-sec
 
 
 AWS Elastic Container Registry (ECR)
-
+```bash
 kubectl create secret docker-registry my-pull-secret \
   --docker-server=<account_id>.dkr.ecr.<region>.amazonaws.com \
   --docker-username=AWS \
@@ -48,7 +48,7 @@ kubectl create secret docker-registry my-pull-secret \
     Replace <email> with your email address.
 
 Azure Container Registry (ACR)
-
+```bash
 kubectl create secret docker-registry my-pull-secret \
   --docker-server=<registry-name>.azurecr.io \
   --docker-username=<client-id> \
@@ -60,7 +60,7 @@ kubectl create secret docker-registry my-pull-secret \
     Replace <email> with your email address.
 
 DockerHub
-
+```bash
 kubectl create secret docker-registry my-pull-secret \
   --docker-server=https://index.docker.io/v1/ \
   --docker-username=<dockerhub-username> \
@@ -71,7 +71,7 @@ kubectl create secret docker-registry my-pull-secret \
     Replace <email> with your email address.
 
 DigitalOcean Container Registry
-
+```bash
 kubectl create secret docker-registry my-pull-secret \
   --docker-server=registry.digitalocean.com \
   --docker-username=<api-token> \
@@ -82,7 +82,7 @@ kubectl create secret docker-registry my-pull-secret \
     Replace <email> with your email address.
 
 Google Container Registry (GCR)
-
+```bash
 kubectl create secret docker-registry my-pull-secret \
   --docker-server=gcr.io \
   --docker-username=_json_key \
@@ -93,7 +93,7 @@ kubectl create secret docker-registry my-pull-secret \
     Replace <email> with your email address.
 
 OpenShift Container Registry
-
+```bash
 kubectl create secret docker-registry my-pull-secret \
   --docker-server=default-route-openshift-image-registry.apps.<openshift-cluster> \
   --docker-username=<openshift-username> \
