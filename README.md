@@ -62,7 +62,7 @@ Steps to Set Up Each Credential in Jenkins:
 
 
 
-Here’s a Markdown table you can copy and paste into GitHub to document how to set up Jenkins credentials for AWS ECR, Azure ACR, and GCP GCR:
+How to set up Jenkins credentials for AWS ECR, Azure ACR, and GCP GCR:
 
 | **Provider**     | **Credential Type**           | **Jenkins Credential Kind** | **Details**                                                                                 | **Example ID**         |
 |-------------------|-------------------------------|-----------------------------|---------------------------------------------------------------------------------------------|-------------------------|
