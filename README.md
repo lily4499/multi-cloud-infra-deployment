@@ -1,45 +1,121 @@
 Here’s the updated markdown table focused specifically on configuring Jenkins to use AWS, Azure, and Google Cloud credentials for Terraform:
 
-| **Cloud Provider** | **Credential Type**                     | **Jenkins Setup Steps**                                                                                                   | **Pipeline Example**                                                                                                          |
-|---------------------|-----------------------------------------|--------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------|
-| **AWS**            | Access Key ID and Secret Access Key     | pipeline {
+# Jenkins and Terraform: Cloud Provider Credentials Setup
+
+This guide explains how to configure Jenkins to authenticate with AWS, Azure, and Google Cloud for deploying infrastructure using Terraform.
+
+---
+
+## AWS Configuration
+
+1. **Create an IAM User in AWS**
+   - Create an IAM user with programmatic access.
+   - Assign appropriate policies (e.g., `AdministratorAccess` or a custom policy).
+   - Download the `Access Key ID` and `Secret Access Key`.
+
+2. **Add AWS Credentials to Jenkins**
+   - Navigate to `Manage Jenkins > Manage Credentials`.
+   - Add a new credential:
+     - **Type**: AWS Credentials or Secret Text.
+     - **ID**: `aws-credentials` (or any identifier).
+
+3. **Jenkinsfile Example**
+   ```groovy
+   pipeline {
        agent any
        environment {
            AWS_ACCESS_KEY_ID = credentials('aws-credentials')
            AWS_SECRET_ACCESS_KEY = credentials('aws-credentials')
        }
-       stages {                                                                                                 |
-| **Azure**           | Service Principal (SP)                 | 1. Create a Service Principal in Azure (`az ad sp create-for-rbac ...`).                                                 | ```groovy                                                                                                                    |
-|                     |                                         | 2. Store the JSON output (Client ID, Secret, Tenant, Subscription ID) as individual Jenkins credentials.                  | pipeline {                                                                                                                   |
-|                     |                                         | 3. Example IDs: `azure-client-id`, `azure-client-secret`, `azure-tenant-id`, `azure-subscription-id`.                     |     environment {                                                                                                            |
-|                     |                                         |                                                                                                                          |         ARM_CLIENT_ID = credentials('azure-client-id')                                                                       |
-|                     |                                         |                                                                                                                          |         ARM_CLIENT_SECRET = credentials('azure-client-secret')                                                               |
-|                     |                                         |                                                                                                                          |         ARM_SUBSCRIPTION_ID = credentials('azure-subscription-id')                                                           |
-|                     |                                         |                                                                                                                          |         ARM_TENANT_ID = credentials('azure-tenant-id')                                                                       |
-|                     |                                         |                                                                                                                          |     }                                                                                                                        |
-|                     |                                         |                                                                                                                          |     stages {                                                                                                                 |
-|                     |                                         |                                                                                                                          |         stage('Terraform Init') {                                                                                           |
-|                     |                                         |                                                                                                                          |             steps {                                                                                                          |
-|                     |                                         |                                                                                                                          |                 sh 'terraform init'                                                                                          |
-|                     |                                         |                                                                                                                          |             }                                                                                                                |
-|                     |                                         |                                                                                                                          |         }                                                                                                                    |
-|                     |                                         |                                                                                                                          |     }                                                                                                                        |
-|                     |                                         |                                                                                                                          | }                                                                                                                            |
-|                     |                                         |                                                                                                                          | ```                                                                                                                          |
-| **GCloud**          | Service Account Key JSON File           | 1. Create a Service Account in Google Cloud and download the JSON key.                                                  | ```groovy                                                                                                                    |
-|                     |                                         | 2. Add the JSON key to Jenkins as a **Secret File** with an ID (e.g., `gcp-key`).                                        | pipeline {                                                                                                                   |
-|                     |                                         |                                                                                                                          |     environment {                                                                                                            |
-|                     |                                         |                                                                                                                          |         GOOGLE_APPLICATION_CREDENTIALS = credentials('gcp-key')                                                             |
-|                     |                                         |                                                                                                                          |     }                                                                                                                        |
-|                     |                                         |                                                                                                                          |     stages {                                                                                                                 |
-|                     |                                         |                                                                                                                          |         stage('Terraform Init') {                                                                                           |
-|                     |                                         |                                                                                                                          |             steps {                                                                                                          |
-|                     |                                         |                                                                                                                          |                 sh 'terraform init'                                                                                          |
-|                     |                                         |                                                                                                                          |             }                                                                                                                |
-|                     |                                         |                                                                                                                          |         }                                                                                                                    |
-|                     |                                         |                                                                                                                          |     }                                                                                                                        |
-|                     |                                         |                                                                                                                          | }                                                                                                                            |
-|                     |                                         |                                                                                                                          | ```                                                                                                                          |
+       stages {
+           stage('Terraform Init') {
+               steps {
+                   sh 'terraform init'
+               }
+           }
+           stage('Terraform Apply') {
+               steps {
+                   sh 'terraform apply -auto-approve'
+               }
+           }
+       }
+   }
+
+   ============================================================
+
+## Azure Configuration
+
+1. **Create an Azure Service Principal**
+  az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/{SUBSCRIPTION_ID}"
+
+
+2. **Add Azure Credentials to Jenkins**
+   - Navigate to Manage Jenkins > Manage Credentials.
+Add each value as individual credentials:
+    IDs: azure-client-id, azure-client-secret, azure-tenant-id, azure-subscription-id.
+3. **Jenkinsfile Example**
+   ```groovy
+   pipeline {
+       agent any
+       environment {
+           ARM_CLIENT_ID = credentials('azure-client-id')
+        ARM_CLIENT_SECRET = credentials('azure-client-secret')
+        ARM_SUBSCRIPTION_ID = credentials('azure-subscription-id')
+        ARM_TENANT_ID = credentials('azure-tenant-id')
+       }
+       stages {
+           stage('Terraform Init') {
+               steps {
+                   sh 'terraform init'
+               }
+           }
+           stage('Terraform Apply') {
+               steps {
+                   sh 'terraform apply -auto-approve'
+               }
+           }
+       }
+   }
+
+
+===================================================
+
+## Google Cloud Configuration
+
+1. **Create a Service Account**
+Create a Service Account in Google Cloud.
+Assign required roles (e.g., Editor or custom).
+Download the JSON key for the Service Account.
+
+
+2. **Add Azure Credentials to Jenkins**
+   -Navigate to Manage Jenkins > Manage Credentials.
+Add the JSON key as a Secret File:
+
+    ID: gcp-key.
+3. **Jenkinsfile Example**
+   ```groovy
+   pipeline {
+       agent any
+       environment {
+           GOOGLE_APPLICATION_CREDENTIALS = credentials('gcp-key')
+       }
+       stages {
+           stage('Terraform Init') {
+               steps {
+                   sh 'terraform init'
+               }
+           }
+           stage('Terraform Apply') {
+               steps {
+                   sh 'terraform apply -auto-approve'
+               }
+           }
+       }
+   }
+
+
+
 
 
 
