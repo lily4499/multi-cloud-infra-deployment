@@ -55,6 +55,7 @@ Here’s the updated markdown table focused specifically on configuring Jenkins 
 
 
 
+
 Here’s the table for setting up Jenkins credentials with the specified types for each provider:
 
 # Setting Up Jenkins Credentials in Jenkins
